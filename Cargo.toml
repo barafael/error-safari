@@ -11,3 +11,4 @@ anyhow = "1.0.56"
 snafu = { version = "0.7.0", features = [
     "rust_1_46",
 ], default-features = false }
+random-emoji = { git = "https://github.com/barafael/random-emoji.git" }
