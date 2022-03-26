@@ -1,7 +1,8 @@
 [package]
-name = "error-gui"
+name = "ErrorSafari"
 version = "0.1.0"
 edition = "2021"
+authors = ["Rafael Bachmann <rafael.bachmann.93@gmail.com>"]
 
 [dependencies]
 klask = { git = "https://github.com/MichalGniadek/klask.git" }

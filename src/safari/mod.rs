@@ -1,12 +1,12 @@
-use crate::Safari;
+use crate::{Safari, Style};
 
+mod thiserror;
 mod unwrapping;
 
-impl Safari {
-    pub fn run(self) {
-        match self.subcommand {
-            crate::Subcommand::Unwrap { path } => unwrapping::run(self.input),
-            _ => println!("{:?}", self),
-        }
+pub fn run(safari: Safari) {
+    match safari.subcommand {
+        Style::Unwrap { path } => unwrapping::run(safari.input),
+        Style::Thiserror { choose_one } => thiserror::run(safari.input, choose_one),
+        _ => println!("{:?}", safari),
     }
 }
