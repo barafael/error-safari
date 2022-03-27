@@ -561,7 +561,7 @@ dependencies = [
 [[package]]
 name = "famous-last-words"
 version = "0.1.1"
-source = "git+https://github.com/barafael/famous-last-words.git#e0297aab13998daa10ab6c6e55bd38bb793c8046"
+source = "git+https://github.com/barafael/famous-last-words.git#fb1affdb2b3799e823e62f5d516b211e5e0c4700"
 dependencies = [
  "enum_index",
  "enum_index_derive",
