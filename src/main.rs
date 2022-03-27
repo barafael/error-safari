@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 use clap::{Parser, ValueHint};
 use klask::Settings;
+use safari::external;
 use std::{borrow::Cow, path::PathBuf};
 
 mod safari;
@@ -27,15 +28,22 @@ pub enum Style {
         #[clap(long, parse(from_os_str), value_hint = ValueHint::AnyPath)]
         path: Option<PathBuf>,
     },
+
     Native {
         #[clap(long)]
         flag: bool,
         #[clap(short, parse(from_occurrences))]
         volume: i32,
     },
+
     Thiserror {
         #[clap(arg_enum)]
         choose_one: Option<Alternative>,
+    },
+
+    ExternalCrate {
+        #[clap(arg_enum)]
+        alt: external::Alternative,
     },
 }
 

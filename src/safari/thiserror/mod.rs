@@ -1,5 +1,4 @@
 use crate::Alternative;
-use std::io;
 use thiserror::Error;
 
 mod nested;

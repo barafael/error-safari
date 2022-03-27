@@ -1,5 +1,5 @@
 [package]
-name = "ErrorSafari"
+name = "error_safari"
 version = "0.1.0"
 edition = "2021"
 authors = ["Rafael Bachmann <rafael.bachmann.93@gmail.com>"]
@@ -13,3 +13,5 @@ snafu = { version = "0.7.0", features = [
     "rust_1_46",
 ], default-features = false }
 random-emoji = { git = "https://github.com/barafael/random-emoji.git" }
+deutsche-bahn-delay-reasons = { git = "https://github.com/barafael/deutsche-bahn-delay-reasons.git" }
+famous-last-words = { git = "https://github.com/barafael/famous-last-words.git" }
