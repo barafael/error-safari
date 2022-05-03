@@ -1,5 +1,6 @@
-use crate::Alternative;
 use thiserror::Error;
+
+pub use nested::Operation;
 
 mod nested;
 
@@ -11,20 +12,28 @@ pub enum Error {
     #[error("It's nice, but still a failure! Here's an emoji: {0}")]
     FailNicely(char),
 
-    #[error("Error ocurred in befuddle module: {0}")]
-    Befuddle(#[source] nested::Error),
+    #[error("Befuddling in nested module: {0}")]
+    FailNested(#[from] nested::Error),
 }
 
-pub fn run(input: String, choose_one: Option<Alternative>) {
-    let _ = match input.as_str() {
+pub fn run(input: &str, choose_one: Option<Operation>) {
+    match operation(input, choose_one) {
+        Ok(()) => println!("thiserror operation succeeded!"),
+        Err(e) => println!("Error during thiserror operation: {e}"),
+    }
+}
+
+fn operation(input: &str, choose_one: Option<Operation>) -> Result<(), Error> {
+    match input {
         "fail" => Err(Error::Fail),
         "fail-nice" => Err(Error::FailNicely(random_emoji::generate())),
+        "fail-nested" => {
+            if let Some(one) = choose_one {
+                Err(Error::FailNested(nested::Error::from(one)))
+            } else {
+                Err(Error::FailNicely(random_emoji::generate()))
+            }
+        }
         _ => Ok(()),
-    }
-    .map(|_| println!("thiserror operation succeeded!"))
-    .map_err(|e| println!("Error during thiserror operation: {e}"));
-
-    if let Some(one) = choose_one {
-        println!("{}", nested::Error::from(one));
     }
 }

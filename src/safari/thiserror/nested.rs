@@ -1,6 +1,13 @@
-use crate::Alternative;
+use clap::Parser;
 use std::io;
 use thiserror::Error;
+
+#[derive(Debug, Parser, Clone, clap::ArgEnum)]
+pub enum Operation {
+    ThinkAndPray,
+    InputOutput,
+    Wtf,
+}
 
 #[derive(Debug, Error)]
 pub enum Error {
@@ -14,15 +21,15 @@ pub enum Error {
     WhaHappened(#[from] anyhow::Error),
 }
 
-impl From<Alternative> for Error {
-    fn from(a: Alternative) -> Error {
+impl From<Operation> for Error {
+    fn from(a: Operation) -> Error {
         match a {
-            Alternative::A => Error::InsufficientThoughtsAndPrayers {
+            Operation::ThinkAndPray => Error::InsufficientThoughtsAndPrayers {
                 thoughts: 5,
                 prayers: 34,
             },
-            Alternative::B => Error::Io(io::Error::from_raw_os_error(55)),
-            Alternative::C => Error::WhaHappened(anyhow::anyhow!("Wa happen!?")),
+            Operation::InputOutput => Error::Io(io::Error::from_raw_os_error(55)),
+            Operation::Wtf => Error::WhaHappened(anyhow::anyhow!("Wa happen!?")),
         }
     }
 }

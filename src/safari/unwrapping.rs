@@ -1,13 +1,28 @@
-pub fn run(input: String) {
-    is_it(&input, "fail").unwrap();
-    is_it(&input, "fail-nice").expect("It was fail-nice! I'm offended");
-    println!("worked out nicely! Input was: {input:?}");
+pub fn run(input: &str) {
+    operation(input).unwrap();
 }
 
-fn is_it(input: &str, it: &str) -> Option<()> {
-    if input == it.to_string() {
-        None
-    } else {
-        Some(())
+fn operation(input: &str) -> Result<(), Error> {
+    match input {
+        "fail" => Err(Error::Fail),
+        "fail-nice" => Err(Error::FailNice),
+        _ => Ok(()),
+    }
+}
+
+#[derive(Debug)]
+pub enum Error {
+    Fail,
+    FailNice,
+}
+
+impl std::error::Error for Error {}
+
+impl std::fmt::Display for Error {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        match self {
+            Error::Fail => write!(f, "Operation Failed"),
+            Error::FailNice => write!(f, "Sorry, the application failed to successfully succeed"),
+        }
     }
 }

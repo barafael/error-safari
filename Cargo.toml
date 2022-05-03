@@ -5,13 +5,11 @@ edition = "2021"
 authors = ["Rafael Bachmann <rafael.bachmann.93@gmail.com>"]
 
 [dependencies]
-klask = { git = "https://github.com/MichalGniadek/klask.git" }
-clap = "=3.0.0"
-thiserror = "1.0.30"
-anyhow = "1.0.56"
-snafu = { version = "0.7.0", features = [
-    "rust_1_46",
-], default-features = false }
-random-emoji = { git = "https://github.com/barafael/random-emoji.git" }
+anyhow = "1.0.57"
+clap = "3.1.15"
 deutsche-bahn-delay-reasons = { git = "https://github.com/barafael/deutsche-bahn-delay-reasons.git" }
 famous-last-words = { git = "https://github.com/barafael/famous-last-words.git" }
+klask = { git = "https://github.com/barafael/klask" }
+rand = "0.8.5"
+random-emoji = { git = "https://github.com/barafael/random-emoji.git" }
+thiserror = "1.0.31"
