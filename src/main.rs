@@ -5,7 +5,10 @@ use cli::Safari;
 use klask::Settings;
 use std::borrow::Cow;
 
+/// Command Line Interface.
 mod cli;
+
+/// Have a look around!
 mod safari;
 
 fn main() {

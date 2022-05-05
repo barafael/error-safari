@@ -2,7 +2,7 @@ use clap::Parser;
 use thiserror::Error;
 
 #[derive(Debug, Parser, Clone, clap::ArgEnum)]
-pub enum Alternative {
+pub enum SomeCrate {
     DeutscheBahn,
     FamousLastWords,
 }
@@ -16,15 +16,15 @@ pub enum Error {
     FamousLastWord(#[from] famous_last_words::Error),
 }
 
-pub fn run(_input: &str, alt: Alternative) {
+pub fn run(_input: &str, alt: SomeCrate) {
     if let Err(e) = operation(_input, alt) {
         println!("{}", e);
     }
 }
 
-fn operation(_input: &str, alt: Alternative) -> Result<(), Error> {
+fn operation(_input: &str, alt: SomeCrate) -> Result<(), Error> {
     match alt {
-        Alternative::DeutscheBahn => Err(deutsche_bahn_delay_reasons::get_grund().into()),
-        Alternative::FamousLastWords => Err(famous_last_words::get_random_error().into()),
+        SomeCrate::DeutscheBahn => Err(deutsche_bahn_delay_reasons::get_grund().into()),
+        SomeCrate::FamousLastWords => Err(famous_last_words::get_random_error().into()),
     }
 }
