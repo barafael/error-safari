@@ -12,16 +12,12 @@ mod cli;
 mod safari;
 
 fn main() {
-    match Safari::try_parse() {
-        Ok(s @ Safari { cli: true, .. }) => {
-            safari::run(s);
-        }
-        _ => {
-            let mut settings = Settings::default();
-            settings.custom_font = Some(Cow::Borrowed(include_bytes!(r"../Roboto-Medium.ttf")));
-            //settings.style.body_text_style = TextStyle::Heading;
+    if let Ok(s @ Safari { cli: true, .. }) = Safari::try_parse() {
+        safari::run(s);
+    } else {
+        let mut settings = Settings::default();
+        settings.custom_font = Some(Cow::Borrowed(include_bytes!(r"../Roboto-Medium.ttf")));
 
-            klask::run_derived::<Safari, _>(settings, safari::run);
-        }
+        klask::run_derived::<Safari, _>(settings, safari::run);
     };
 }

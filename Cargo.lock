@@ -556,7 +556,6 @@ dependencies = [
  "deutsche-bahn-delay-reasons",
  "famous-last-words",
  "klask",
- "rand",
  "random-emoji",
  "thiserror",
 ]

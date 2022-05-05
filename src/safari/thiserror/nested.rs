@@ -22,14 +22,14 @@ pub enum Error {
 }
 
 impl From<Operation> for Error {
-    fn from(a: Operation) -> Error {
+    fn from(a: Operation) -> Self {
         match a {
-            Operation::ThinkAndPray => Error::InsufficientThoughtsAndPrayers {
+            Operation::ThinkAndPray => Self::InsufficientThoughtsAndPrayers {
                 thoughts: 5,
                 prayers: 34,
             },
-            Operation::InputOutput => Error::Io(io::Error::from_raw_os_error(55)),
-            Operation::Wtf => Error::WhaHappened(anyhow::anyhow!("Wa happen!?")),
+            Operation::InputOutput => Self::Io(io::Error::from_raw_os_error(55)),
+            Operation::Wtf => Self::WhaHappened(anyhow::anyhow!("Wa happen!?")),
         }
     }
 }

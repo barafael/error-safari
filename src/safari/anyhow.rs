@@ -1,16 +1,14 @@
 use anyhow::Context;
 use deutsche_bahn_delay_reasons::Grund;
-use rand::Rng;
 
 pub fn run(choice: u32) {
-    let mut rng = rand::thread_rng();
-    match operation(choice, rng.gen_range(0..5)) {
+    match operation(choice) {
         Ok(()) => println!("anyhow operation succeeded!"),
         Err(e) => println!("Error during anyhow operation: {e}"),
     }
 }
 
-fn operation(choice: u32, input: u32) -> anyhow::Result<()> {
+fn operation(choice: u32) -> anyhow::Result<()> {
     match choice {
         0 => anyhow::bail!("Bailing out!!!"),
         1 => Err(anyhow::anyhow!("Creating anyhow error in-place")),

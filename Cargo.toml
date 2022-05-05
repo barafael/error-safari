@@ -10,6 +10,5 @@ clap = "3.1.15"
 deutsche-bahn-delay-reasons = { git = "https://github.com/barafael/deutsche-bahn-delay-reasons.git" }
 famous-last-words = { git = "https://github.com/barafael/famous-last-words.git" }
 klask = { git = "https://github.com/barafael/klask" }
-rand = "0.8.5"
 random-emoji = { git = "https://github.com/barafael/random-emoji.git" }
 thiserror = "1.0.31"

@@ -27,13 +27,10 @@ fn operation(input: &str, choose_one: Option<Operation>) -> Result<(), Error> {
     match input {
         "fail" => Err(Error::Fail),
         "fail-nice" => Err(Error::FailNicely(random_emoji::generate())),
-        "fail-nested" => {
-            if let Some(one) = choose_one {
-                Err(Error::FailNested(nested::Error::from(one)))
-            } else {
-                Err(Error::FailNicely(random_emoji::generate()))
-            }
-        }
+        "fail-nested" => choose_one.map_or_else(
+            || Err(Error::FailNicely(random_emoji::generate())),
+            |one| Err(Error::FailNested(nested::Error::from(one))),
+        ),
         _ => Ok(()),
     }
 }
