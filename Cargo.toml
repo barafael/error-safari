@@ -3,6 +3,15 @@ name = "error_safari"
 version = "0.1.0"
 edition = "2021"
 authors = ["Rafael Bachmann <rafael.bachmann.93@gmail.com>"]
+default-run = "error-safari-gui"
+
+[[bin]]
+name = "error-safari-cli"
+path = "bin/cli.rs"
+
+[[bin]]
+name = "error-safari-gui"
+path = "bin/gui.rs"
 
 [dependencies]
 anyhow = "1.0.57"

@@ -1,4 +1,10 @@
-use crate::{cli::Style, Safari};
+//! Showcases clap parsing and different widgets
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
+use interface::{Safari, Style};
+
+/// Command Line Interface.
+pub mod interface;
 
 pub mod anyhow;
 pub mod external;

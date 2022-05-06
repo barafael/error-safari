@@ -18,7 +18,9 @@ fn operation(choice: u32) -> anyhow::Result<()> {
         }
         3 => operation_a().context("operation_a failed!"),
         4 => operation_b().context("operation_b failed!"),
-        _ => Err(anyhow::anyhow!("Some root cause")).context("With some context tacked on"),
+        _ => Err(anyhow::anyhow!("Some root cause"))
+            .context("With some context tacked on")
+            .context("another"),
     }
 }
 
