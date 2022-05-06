@@ -1,7 +1,6 @@
+use crate::{external, thiserror::Operation};
 use clap::{Parser, ValueHint};
 use std::path::PathBuf;
-
-use crate::{external, thiserror::Operation};
 
 #[derive(Debug, Parser)]
 #[clap(name = "Error Safari")]

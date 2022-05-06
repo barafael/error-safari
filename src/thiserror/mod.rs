@@ -1,6 +1,5 @@
-use thiserror::Error;
-
 pub use nested::Operation;
+use thiserror::Error;
 
 mod nested;
 

@@ -1,6 +1,3 @@
-//! Showcases clap parsing and different widgets
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-
 use interface::{Safari, Style};
 
 /// Command Line Interface.
